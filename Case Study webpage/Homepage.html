@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduBridge - Video Player</title>
+    <link rel="stylesheet" href="Homepage.css">
+</head>
+<body>
+
+    <div class="floating-icons-container">
+        <div class="floating-icon icon-1">🎓</div>
+        <div class="floating-icon icon-2">💻</div>
+        <div class="floating-icon icon-3">🔬</div>
+        <div class="floating-icon icon-4">📚</div>
+        <div class="floating-icon icon-5">💡</div>
+        <div class="floating-icon icon-6">🚌</div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <div class="menu-and-logo">
+                <button id="menu-toggle-btn" class="menu-toggle-btn">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </button>
+                <div class="logo">
+                    <img src="logo.jpg" alt="EduBridge Logo">
+                </div>
+            </div>
+            <h1>EduBridge</h1>
+            <div class="profile-section">
+                <span>MD Azijur Rahman</span>
+                <img src="IMG_0151.JPG" alt="User Profile Picture">
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-container" id="page-container">
+        <aside class="vertical-nav" id="vertical-nav">
+            <nav>
+                <ul>
+                    <li><a href="#"><span class="nav-icon">📜</span> History</a></li>
+                    <li><a href="down.html"><span class="nav-icon">💾</span> Downloaded Videos</a></li>
+                    <li><a href="#"><span class="nav-icon">📋</span> Playlist</a></li>
+                    <li><a href="#"><span class="nav-icon">🎓</span> Your Courses</a></li>
+                    <li><a href="#"><span class="nav-icon">⚙️</span> Settings</a></li>
+                    <li><a href="#"><span class="nav-icon">📤</span> Feedback</a></li>
+                    <li><a href="#"><span class="nav-icon">ℹ️</span> About</a></li>
+                </ul>
+                <div class="sidebar-auth-links">
+                    <a href="login.html" class="auth-btn">Login</a>
+                    <a href="register.html" class="auth-btn register-btn">Register</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="main-container">
+                <div class="video-player-section">
+                    <video id="main-video" controls crossOrigin="anonymous">
+                        <source src="SQL Explained in 100 Seconds.mp4.mp4" type="video/mp4">
+                        <track src="zsjvFFKOm3c-en-.vtt" kind="subtitles" srclang="en" label="English" mode="showing" default>
+                        <track src="ban.vtt" kind="subtitles" srclang="bn" label="বাংলা">
+                        <track src="cakma.vtt" kind="subtitles" srclang="es" label="Chakma">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-info-panel">
+                        <div class="video-title">
+                            <h2>SQL Explained in 100 Seconds</h2>
+                            <p>A quick-fire introduction to database concepts.</p>
+                        </div>
+                        <div class="controls-panel">
+                            <button id="mute-btn">🔇 Mute</button>
+                            <button id="read-subtitle-btn">🔊 Read</button>
+                            <button id="start-dubbing-btn">▶️ Dub</button>
+                            <button id="download-btn">📥 Download</button>
+                        </div>
+                    </div>
+                </div>
+                <section class="downloads-section" id="downloads-section">
+                    <h2>My Downloads</h2>
+                    <div class="grid-container" id="downloads-grid"></div>
+                </section>
+
+                <section class="stats-section">
+                    <div class="stat-item"><div class="stat-icon"><img class="main-icons" src="pic1.png" alt="Total Learners Icon"></div><div class="stat-number" data-target="15000">0+</div><div class="stat-label">Total Learners</div></div>
+                    <div class="stat-item"><div class="stat-icon"><img class="main-icons" src="pic2.png" alt="Total Courses Icon"></div><div class="stat-number" data-target="150">0+</div><div class="stat-label">Total Courses</div></div>
+                    <div class="stat-item"><div class="stat-icon"><img class="main-icons" src="pic3.png" alt="Registered Learners Icon"></div><div class="stat-number" data-target="10000">0+</div><div class="stat-label">Registered Learners</div></div>
+                    <div class="stat-item"><div class="stat-icon"><img class="main-icons" src="pic4.png" alt="Course Completed Icon"></div><div class="stat-number" data-target="1400">0</div><div class="stat-label">Course Completed</div></div>
+                </section>
+
+                <div class="video-gallery">
+                    <h2>More Lessons</h2>
+                    <div class="grid-container">
+                         <div class="video-thumbnail"><img src="alg.jpg" alt="A thumbnail for a video lesson."><p>Lesson 2: Introduction to Algebra</p></div>
+                         <div class="video-thumbnail"><img src="solar.jpg" alt="A thumbnail for a video lesson."><p>Lesson 3: The Solar System</p></div>
+                         <div class="video-thumbnail"><img src="pro.jpg" alt="A thumbnail for a video lesson."><p>Lesson 4: Basics of Programming</p></div>
+                         <div class="video-thumbnail"><img src="world.jpg" alt="A thumbnail for a video lesson."><p>Lesson 5: World History</p></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 EduBridge. All Rights Reserved.</p>
+            <div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Contact Us</a></div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggleBtn = document.getElementById('menu-toggle-btn');
+            const pageContainer = document.getElementById('page-container');
+            
+            menuToggleBtn.addEventListener('click', () => {
+                pageContainer.classList.toggle('sidebar-open');
+            });
+
+            const video = document.getElementById('main-video');
+            const muteBtn = document.getElementById('mute-btn');
+            const readSubtitleBtn = document.getElementById('read-subtitle-btn');
+            const startDubbingBtn = document.getElementById('start-dubbing-btn');
+            const downloadBtn = document.getElementById('download-btn');
+            const downloadsGrid = document.getElementById('downloads-grid');
+            const downloadsSection = document.getElementById('downloads-section');
+            let isDubbingActive = false;
+
+            function getActiveTrack() {
+                for (let i = 0; i < video.textTracks.length; i++) {
+                    if (video.textTracks[i].mode === 'showing') {
+                        return video.textTracks[i];
+                    }
+                }
+                return null;
+            }
+
+            muteBtn.addEventListener('click', () => {
+                video.muted = !video.muted;
+                muteBtn.textContent = video.muted ? '🔈 Unmute' : '🔇 Mute';
+            });
+
+            readSubtitleBtn.addEventListener('click', () => {
+                const track = getActiveTrack();
+                if (track && track.activeCues && track.activeCues.length > 0) {
+                    const currentText = track.activeCues[0].text;
+                    const utterance = new SpeechSynthesisUtterance(currentText);
+                    window.speechSynthesis.speak(utterance);
+                } else {
+                    console.warn('No active subtitle to read.');
+                }
+            });
+
+            const dubbingHandler = () => {
+                if (!isDubbingActive) return;
+                const track = getActiveTrack();
+                const currentCue = track?.activeCues[0];
+                if (currentCue) {
+                    window.speechSynthesis.cancel();
+                    const utterance = new SpeechSynthesisUtterance(currentCue.text);
+                    window.speechSynthesis.speak(utterance);
+                }
+            };
+
+            startDubbingBtn.addEventListener('click', () => {
+                isDubbingActive = !isDubbingActive;
+                const track = getActiveTrack();
+                if (isDubbingActive) {
+                    if (!track) {
+                        console.warn('Please select a subtitle track to start dubbing.');
+                        isDubbingActive = false;
+                        return;
+                    }
+                    video.muted = true;
+                    muteBtn.textContent = '🔈 Unmute';
+                    startDubbingBtn.textContent = '⏹️ Stop Dubbing';
+                    startDubbingBtn.classList.add('active');
+                    track.addEventListener('cuechange', dubbingHandler);
+                    dubbingHandler();
+                } else {
+                    window.speechSynthesis.cancel();
+                    startDubbingBtn.textContent = '▶️ Start Dubbing';
+                    startDubbingBtn.classList.remove('active');
+                    if (track) {
+                        track.removeEventListener('cuechange', dubbingHandler);
+                    }
+                }
+            });
+
+            downloadsSection.style.display = 'none';
+            downloadBtn.addEventListener('click', () => {
+                downloadBtn.textContent = 'Downloaded ✔️';
+                downloadBtn.disabled = true;
+                downloadsSection.style.display = 'block';
+                const downloadedVideoHTML = `
+                    <div class="video-thumbnail">
+                        <img src="https://placehold.co/400x225/cccccc/ffffff?text=Downloaded+Video" alt="A thumbnail for a downloaded video lesson.">
+                        <p>SQL Explained in 100 Seconds</p>
+                    </div>
+                `;
+                downloadsGrid.innerHTML = downloadedVideoHTML;
+            });
+
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const statObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = parseInt(el.getAttribute('data-target'), 10);
+                        const duration = 2000;
+                        let current = 0;
+                        const increment = target / (duration / 16);
+                        const updateCounter = () => {
+                            current += increment;
+                            if (current < target) {
+                                el.innerText = Math.ceil(current).toLocaleString();
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                el.innerText = target.toLocaleString() + (el.innerText.includes('+') ? '+' : '');
+                            }
+                        };
+                        requestAnimationFrame(updateCounter);
+                        observer.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+            statNumbers.forEach(number => statObserver.observe(number));
+        });
+    </script>
+
+</body>
+</html>

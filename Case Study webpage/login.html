@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTC - Login</title>
+    <link rel="stylesheet" href="login.css">
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Background container for floating icons -->
+    <div class="floating-icons-container">
+        <div class="floating-icon icon-1">🎓</div>
+        <div class="floating-icon icon-2">💻</div>
+        <div class="floating-icon icon-3">🔬</div>
+        <div class="floating-icon icon-4">📚</div>
+        <div class="floating-icon icon-5">💡</div>
+        <div class="floating-icon icon-6">🚌</div>
+    </div>
+
+    <!-- Main login container -->
+    <div class="main-container">
+        <!-- Right side with the form -->
+        <div class="form-section">
+            <div class="form-wrapper">
+                <div class="logo">
+                    <!-- Using a placeholder for the logo -->
+                    <img class="logo-img" src="logo.jpg" alt="DIU Transport Center Logo" onerror="this.onerror=null;this.src='https://placehold.co/150x80/ffffff/34495e?text=Logo';">
+                </div>
+                <h1>Welcome to EduBridge</h1>
+                <p class="subtitle">Login to enjoy your learning journey.</p>
+
+                <form id="loginForm" action="#" novalidate>
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Enter your username">
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" name="password" placeholder="Enter your password">
+                            <span class="password-toggle-icon">👀</span>
+                        </div>
+                        <div class="error-message"></div>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot your password?</a>
+                    <!-- The button is now clean, the link is handled in JS -->
+                    <button type="submit" class="login-btn">Login</button>
+                </form>
+
+                <p class="signup-link">
+                    Don't have an account? <a href="#">Sign Up</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Wait for the entire HTML document to be loaded before running the script
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Select all the necessary elements from the DOM
+            const loginForm = document.getElementById('loginForm');
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const passwordToggle = document.querySelector('.password-toggle-icon');
+
+            // --- PASSWORD VISIBILITY TOGGLE ---
+            if (passwordToggle) {
+                passwordToggle.addEventListener('click', () => {
+                    // Check the current type of the password input
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+                    
+                    // Change the icon based on the visibility
+                    passwordToggle.textContent = type === 'password' ? '👀' : '🙈';
+                });
+            }
+
+            // --- FORM VALIDATION ---
+            loginForm.addEventListener('submit', (event) => {
+                // Prevent the default form submission behavior
+                event.preventDefault();
+                
+                // Reset previous errors
+                clearAllErrors();
+                
+                let isValid = true;
+
+                // 1. Validate Username
+                if (usernameInput.value.trim() === '') {
+                    setError(usernameInput, 'Username is required.');
+                    isValid = false;
+                }
+
+                // 2. Validate Password
+                const passwordValue = passwordInput.value.trim();
+                if (passwordValue === '') {
+                    setError(passwordInput, 'Password is required.');
+                    isValid = false;
+                } else if (passwordValue.length < 6) {
+                    setError(passwordInput, 'Password must be at least 6 characters long.');
+                    isValid = false;
+                }
+
+                // If the form is valid, you can proceed with submission
+                if (isValid) {
+                    // Provide feedback to the user
+                    const loginButton = loginForm.querySelector('.login-btn');
+                    loginButton.innerHTML = 'Logging in...'; // Use innerHTML to clear potential old content
+                    loginButton.disabled = true;
+
+                    // Simulate a network request then redirect
+                    setTimeout(() => {
+                        console.log('Login successful! Redirecting...');
+                        // *** REDIRECT TO HOMEPAGE HERE ***
+                        window.location.href = '../Homepage.html';
+                    }, 1000); // Reduced delay for faster redirect
+                }
+            });
+            
+            /**
+             * Sets an error message for a specific input field.
+             * @param {HTMLElement} inputElement - The input element to show the error for.
+             * @param {string} message - The error message to display.
+             */
+            function setError(inputElement, message) {
+                inputElement.classList.add('error');
+                const errorContainer = inputElement.closest('.input-group').querySelector('.error-message');
+                if (errorContainer) {
+                    errorContainer.textContent = message;
+                }
+            }
+
+            /**
+             * Clears a single error from an input field.
+             * @param {HTMLElement} inputElement - The input element to clear the error from.
+             */
+            function clearError(inputElement) {
+                inputElement.classList.remove('error');
+                const errorContainer = inputElement.closest('.input-group').querySelector('.error-message');
+                if (errorContainer) {
+                    errorContainer.textContent = '';
+                }
+            }
+
+            /**
+             * Clears all error messages and styles from the form.
+             */
+            function clearAllErrors() {
+                const errorInputs = loginForm.querySelectorAll('input.error');
+                errorInputs.forEach(input => clearError(input));
+            }
+        });
+    </script>
+</body>
+</html>

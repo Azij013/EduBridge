@@ -1,0 +1,236 @@
+/* --- CSS Variables for easy theme management --- */
+:root {
+    --primary-bg-color: #f0f2f5;
+    --login-bg-color: #ffffff;
+    --form-text-color: #333;
+    --form-label-color: #555;
+    --input-border-color: #ccc;
+    --input-focus-ring-color: #007bff; /* A more standard blue */
+    --button-bg-color-start: #007bff;
+    --button-bg-color-end: #0056b3;
+    --button-hover-bg-start: #0056b3;
+    --button-hover-bg-end: #004085;
+    --error-color: #e74c3c;
+    --link-color: #007bff;
+    --link-hover-color: #0056b3;
+}
+
+/* --- General Body and Font Styles --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--primary-bg-color);
+    overflow: hidden; /* Hide scrollbars caused by animations */
+}
+
+/* --- Floating Icons Animation --- */
+@keyframes float {
+    0% { transform: translateY(0px) rotate(-5deg); opacity: 0.7; }
+    50% { transform: translateY(-25px) rotate(5deg); opacity: 1; }
+    100% { transform: translateY(0px) rotate(-5deg); opacity: 0.7; }
+}
+
+.floating-icons-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.floating-icon {
+    position: absolute;
+    font-size: 4rem;
+    animation: float 6s ease-in-out infinite;
+    color: var(--link-color);
+    opacity: 0.15;
+}
+
+.icon-1 { top: 10%; left: 15%; animation-delay: 0s; }
+.icon-2 { top: 20%; left: 80%; animation-delay: -2s; animation-duration: 7s; font-size: 5rem; }
+.icon-3 { top: 70%; left: 10%; animation-delay: -4s; }
+.icon-4 { top: 80%; left: 85%; animation-delay: -1s; animation-duration: 8s; font-size: 6rem; }
+.icon-5 { top: 40%; left: 5%; animation-delay: -5s; }
+.icon-6 { top: 55%; left: 90%; animation-delay: -3s; animation-duration: 7s; }
+
+/* --- Main Layout and Centering --- */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Form Section --- */
+.form-section {
+    width: 100%;
+    max-width: 420px; /* Centered form without the image section */
+    background-color: var(--login-bg-color);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.logo img {
+    height: 100px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--form-text-color);
+}
+
+.subtitle {
+    font-size: 1rem;
+    margin-bottom: 32px;
+    color: var(--form-label-color);
+}
+
+/* --- Form Elements --- */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--form-label-color);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--input-focus-ring-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+    color: #888;
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: var(--link-hover-color);
+}
+
+/* --- Updated Login Button Style --- */
+.login-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    background-image: linear-gradient(45deg, var(--button-bg-color-start), var(--button-bg-color-end));
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+    background-image: linear-gradient(45deg, var(--button-hover-bg-start), var(--button-hover-bg-end));
+}
+
+.login-btn:active:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 123, 255, 0.3);
+}
+
+.login-btn:disabled {
+    background-image: none;
+    background-color: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+
+.signup-link {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 0.95rem;
+    color: var(--form-label-color);
+}
+
+.signup-link a {
+    color: var(--link-color);
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.signup-link a:hover {
+    color: var(--link-hover-color);
+}
+
+/* --- Validation Styles --- */
+.error-message {
+    color: var(--error-color);
+    font-size: 0.8rem;
+    height: 1rem;
+    margin-top: 4px;
+    text-align: left;
+}
+
+.input-group input.error {
+    border-color: var(--error-color);
+    background-color: #fdeded;
+}
